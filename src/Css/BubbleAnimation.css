@@ -1,0 +1,29 @@
+/* .box {
+    width: 200px;
+    height: 200px;
+    background: url("../Assets/FerrariLogo.jpeg") 100% center / cover;
+    animation: radius 8s linear infinite;
+  }
+   */
+   .box {
+    width: 500px; /* Aumentato da 200px a 300px */
+    height: 500px; /* Aumentato da 200px a 300px */
+    background-color: #f0f0f0; /* Colore di sfondo più chiaro */
+    animation: radius 8s linear infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+@keyframes radius {
+  0%, 100% {
+    border-radius: 55% 45% 70% 30% / 43% 70% 30% 57%;
+  }
+  33% {
+    border-radius: 40% 60% 40% 60% / 60% 40% 60% 40%;
+  }
+  66% {
+    border-radius: 20% 80% 80% 20% / 80% 20% 25% 75%;
+  }
+}
