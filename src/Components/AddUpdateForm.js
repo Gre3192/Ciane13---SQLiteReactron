@@ -88,13 +88,14 @@ const AddUpdateForm = ({ props }) => {
 
   const handlePaymentChange = (index, e) => {
     const { name, value } = e.target;
+    const formattedValue = typeof value === 'string' ? value.replace(',', '.') : value;
     const newPayments = [...dataModal.payments];
-    newPayments[index][name] = value;
+    newPayments[index][name] = formattedValue;
     setDataModal((prevData) => ({
       ...prevData,
       payments: newPayments,
     }));
-  };
+};
 
   const addPayment = () => {
     setDataModal((prevData) => ({
