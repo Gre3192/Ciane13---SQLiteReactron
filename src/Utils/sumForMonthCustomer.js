@@ -15,12 +15,15 @@ export default function sumForMonthCustomer(gestione, months, filterCostType = n
 
   // Gestione dei diversi tipi di somme
   const sumByType = (type) => {
-    return filteredFields
+    const sum = filteredFields
       .filter((field) => field.costType === type)
       .reduce((acc, field) => {
         const amount = parseFloat(field.amount);
         return acc + (isNaN(amount) ? 0 : amount);
       }, 0);
+
+    // Controlla se il numero ha decimali
+    return sum == 0 ? 0 : sum % 1 === 0 ? sum.toString() : sum.toFixed(2);
   };
 
   // Calcolo della somma delle fatture e delle note di credito
@@ -34,6 +37,7 @@ export default function sumForMonthCustomer(gestione, months, filterCostType = n
     return totalNoteCredito; // Somma solo delle note di credito
   } else {
     // Totale combinato: fatture meno note di credito
-    return totalFatture - totalNoteCredito;
+    const total = totalFatture - totalNoteCredito
+    return total == 0 ? 0 : total % 1 === 0 ? total.toString() : total.toFixed(2);
   }
 }

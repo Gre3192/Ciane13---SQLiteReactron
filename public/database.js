@@ -25,7 +25,7 @@ db.serialize(() => {
     creation_date TEXT,
     last_modification_date TEXT
   )`);
-  0
+  
   db.run(`CREATE TABLE IF NOT EXISTS Fornitori (
     id_fornitore INTEGER PRIMARY KEY AUTOINCREMENT, 
     name TEXT,

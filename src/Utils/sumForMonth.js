@@ -5,7 +5,7 @@ export default function sumForMonth(data, months, filterType = null) {
   // Trasforma i mesi in stringhe a due cifre
   const monthsStr = monthsArray.map((month) => month.toString().padStart(2, '0'));
 
-  return data.reduce((totalSum, management) => {
+  const total = data.reduce((totalSum, management) => {
     // Somma per ogni gestione
     const managementSum = management.fields.reduce((sum, field) => {
       // Estrae il mese dalla data di scadenza
@@ -35,4 +35,7 @@ export default function sumForMonth(data, months, filterType = null) {
 
     return totalSum + managementSum;
   }, 0);
+
+  // Restituisce il risultato formattato come stringa se necessario
+  return total % 1 === 0 ? total.toString() : total.toFixed(2);
 }
