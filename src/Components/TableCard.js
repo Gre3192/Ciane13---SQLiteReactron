@@ -6,6 +6,7 @@ import cleanDate from '../Utils/cleanDate';
 import checkExpiry from '../Utils/checkExpiry';
 import isPayed from '../Utils/isPayed';
 import capitalizeFirstLetter from '../Utils/capitalizeFirstLetter';
+import { formattedAmount } from '../Utils/formattedAmount';
 
 const cardClasses = 'p-5 rounded-lg shadow-lg mb-4 transition-transform transform';
 const textClasses = 'text-muted-foreground';
@@ -148,7 +149,7 @@ const TableCard = ({ props }) => {
                             const paymentType = item?.paymentType ? item?.paymentType : '-'
                             const expiredDate = item?.expiredDate ? item?.expiredDate : '-'
                             const paymentState = item?.paymentState ? item?.paymentState : '-'
-                            const amount = item?.amount ? item?.amount + ' ' + '\u20AC' : '-'
+                            const amount = item?.amount ? formattedAmount(item?.amount) + ' ' + '\u20AC' : '-'
 
                             const isExpired = checkExpiry(expiredDate, isPayed(paymentState)).isExpired;
                             const isExpiringSoon = checkExpiry(expiredDate, isPayed(paymentState)).isExpiringSoon;
