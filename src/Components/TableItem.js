@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { HiPencil } from "react-icons/hi";
 import { FaTrashAlt, FaCheckCircle, FaExclamationTriangle, FaTimesCircle } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import { formattedAmount } from '../Utils/formattedAmount';
 import cleanDate from '../Utils/cleanDate';
 import getNameFromDate from '../Utils/getNameFromDate';
 import checkExpiry from '../Utils/checkExpiry';
 import isPayed from '../Utils/isPayed';
+
 
 const TableItem = (props) => {
 
@@ -93,7 +95,7 @@ const TableItem = (props) => {
                         const paymentType = item.paymentType ? item.paymentType : '-'
                         const expiredDate = item.expiredDate ? getNameFromDate(item.expiredDate) + ", " + cleanDate(item.expiredDate) : "-"
                         const paymentState = item.paymentState ? item.paymentState : '-'
-                        const amount = item.amount ? item.amount + ' ' + '\u20AC' : "-"
+                        const amount = item.amount ? formattedAmount(item.amount) + ' ' + '\u20AC' : "-"
 
                         const isExpired = checkExpiry(expiredDate, isPayed(paymentState)).isExpired
                         const isExpiringSoon = checkExpiry(expiredDate, isPayed(paymentState)).isExpiringSoon
